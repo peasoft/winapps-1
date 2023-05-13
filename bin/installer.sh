@@ -134,6 +134,7 @@ _config_apps() {
 _config_detected_apps() {
     if [ -f "${HOME}/.local/share/winapps/detected" ]; then
         sed -i 's/\r//g' "${HOME}/.local/share/winapps/detected"
+        iconv -f gbk -t utf-8 "${HOME}/.local/share/winapps/detected" -o "${HOME}/.local/share/winapps/detected"
         source "${HOME}/.local/share/winapps/detected"
         APPS=()
         for I in "${!NAMES[@]}"; do
